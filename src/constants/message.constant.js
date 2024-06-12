@@ -51,6 +51,7 @@ export const MESSAGES = {
         MIN_LENGTH: `자기소개는 ${MIN_RESUME_LENGTH}자 이상 작성해야 합니다.`,
       },
       NOT_FOUND: '이력서가 존재하지 않습니다.',
+      UNAUTH: '이력서와 다른 작성자입니다.',
     },
     CREATE: {
       SUCCEED: '이력서 생성에 성공했습니다.',
