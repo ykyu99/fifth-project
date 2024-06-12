@@ -44,7 +44,11 @@ export class UserController {
 
       res.setHeader('Authorization', `Bearer ${accessToken}`);
 
-      return res.status(200).json({ data: user });
+      return res.status(HTTP_STATUS.OK).json({
+        status: HTTP_STATUS.OK,
+        message: MESSAGES.AUTH.SIGN_IN.SUCCEED,
+        data: { user, accessToken },
+      });
     } catch (err) {
       next(err);
     }
@@ -73,7 +77,11 @@ export class UserController {
         name,
       );
 
-      return res.status(201).json({ data: createdUser });
+      return res.status(HTTP_STATUS.CREATED).json({
+        status: HTTP_STATUS.CREATED,
+        message: MESSAGES.AUTH.SIGN_UP.SUCCEED,
+        data: createdUser,
+      });
     } catch (err) {
       next(err);
     }
