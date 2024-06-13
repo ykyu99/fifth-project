@@ -1,35 +1,51 @@
-import { prisma } from '../utils/prisma.util.js';
-
-
+import { HttpError } from '../errors/http.error.js';
 
 export class UserRepository {
-  signInUser = async ( email ) => {
-    
-    const user = await prisma.user.findUnique({ where: { email } });
+  constructor(prisma) {
+    this.prisma = prisma;
+  }
+  signInUser = async (email) => {
 
-    return user;
-    }
+      const user = await this.prisma.user.findUnique({ where: { email } });
 
-  createUser = async (email, password, name) => {
-
-    const createdUser = await prisma.user.create({
-      data: {
-        email,
-        password,
-        name,
-      },
-    });
-
-    return createdUser;
+      return user;
+        
   };
 
-  getUserById = async ( id ) => {
-    
-    const user = await prisma.user.findUnique({ 
-      where: { id },
-      omit: { password: true }, 
-    });
+  createUser = async (email, password, name) => {
+    try {
+      const createdUser = await this.prisma.user.create({
+        data: {
+          email,
+          password,
+          name,
+        },
+      });
 
-    return user;
+      return createdUser;
+    } catch (err) {
+      if (err.code === 'P2025') {
+        // Prisma error code for record not found
+        throw new HttpError.NotFound('User not found');
+      }
+      throw new HttpError.InternalServerError(err.message);
     }
+  };
+
+  getUserById = async (id) => {
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: { id },
+        omit: { password: true },
+      });
+
+      if (!user) {
+        throw new HttpError.NotFound('User not found');
+      }
+
+      return user;
+    } catch (err) {
+      throw new HttpError.InternalServerError(err.message);
+    }
+  };
 }

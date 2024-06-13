@@ -1,11 +1,13 @@
 import jwt from 'jsonwebtoken';
+import { prisma } from '../utils/prisma.util.js';
 import { HTTP_STATUS } from '../constants/http-status.constant.js';
 import { MESSAGES } from '../constants/message.constant.js';
 import { ACCESS_TOKEN_SECRET } from '../constants/env.constant.js';
 import { UserService } from '../services/users.services.js';
-import { prisma } from '../utils/prisma.util.js';
+import { UserRepository } from '../repositories/users.repositories.js';
 
-const userService = new UserService();
+const userRepository = new UserRepository(prisma);
+const userService = new UserService(userRepository);
 
 export const requireAccessToken = async (req, res, next) => {
   try {

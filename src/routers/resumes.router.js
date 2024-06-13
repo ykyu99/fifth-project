@@ -1,12 +1,18 @@
 import express from 'express';
+import { prisma } from '../utils/prisma.util.js';
+import { ResumeRepository } from '../repositories/resumes.repositories.js';
+import { ResumeService } from '../services/resumes.services.js';
+import { ResumeController } from '../controllers/resumes.controllers.js';
 import { createResumeValidator } from '../middlewares/validators/create-resume-validator.middleware.js';
 import { updateResumeValidator } from '../middlewares/validators/updated-resume-validator.middleware.js';
-import { ResumeController } from '../controllers/resumes.controllers.js';
+
 
 
 const resumesRouter = express.Router();
 
-const resumeController = new ResumeController();
+const resumeRepository = new ResumeRepository(prisma);
+const resumeService = new ResumeService(resumeRepository);
+const resumeController = new ResumeController(resumeService);
 
 resumesRouter.get('/', resumeController.getResumes);
 
