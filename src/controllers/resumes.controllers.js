@@ -1,4 +1,3 @@
-import { ResumeService } from '../services/resumes.services.js';
 import { HTTP_STATUS } from '../constants/http-status.constant.js';
 import { MESSAGES } from '../constants/message.constant.js';
 
@@ -6,7 +5,9 @@ import { MESSAGES } from '../constants/message.constant.js';
 
 
 export class ResumeController {
-  ResumeService = new ResumeService(); 
+  constructor(ResumeService) {
+    this.ResumeService = ResumeService;
+  }
 
   getResumes = async (req, res, next) => {
     try {

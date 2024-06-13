@@ -1,5 +1,4 @@
 import bcrypt from 'bcrypt';
-import { InfoService } from '../services/info.services.js';
 import { HTTP_STATUS } from '../constants/http-status.constant.js';
 import { MESSAGES } from '../constants/message.constant.js';
 import { HASH_SALT_ROUNDS } from '../constants/auth.constant.js';
@@ -8,7 +7,9 @@ import { HASH_SALT_ROUNDS } from '../constants/auth.constant.js';
 
 // User의 컨트롤러(Controller)역할을 하는 클래스
 export class InfoController {
-    InfoService = new InfoService(); // User 서비스를 클래스를 컨트롤러 클래스의 멤버 변수로 할당합니다.
+  constructor(InfoService) {
+    this.InfoService = InfoService;
+  }
 
     getInfo = async (req, res, next) => {
     try {
