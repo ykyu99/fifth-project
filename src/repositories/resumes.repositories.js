@@ -23,7 +23,7 @@ export class ResumeRepository {
       });
 
       if (!resume) {
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
 
       return resume;
@@ -50,7 +50,7 @@ export class ResumeRepository {
         },
       });
       if (!resumeDetail) {
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
 
       return resumeDetail;
@@ -73,7 +73,7 @@ export class ResumeRepository {
     } catch (err) {
       if (err.code === 'P2025') {
         // Prisma error code for record not found
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
       throw new HttpError.InternalServerError(err.message);
     }
@@ -96,7 +96,7 @@ export class ResumeRepository {
     } catch (err) {
       if (err.code === 'P2025') {
         // Prisma error code for record not found
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
       throw new HttpError.InternalServerError(err.message);
     }
@@ -115,7 +115,7 @@ export class ResumeRepository {
     } catch (err) {
       if (err.code === 'P2025') {
         // Prisma error code for record not found
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
       throw new HttpError.InternalServerError(err.message);
     }

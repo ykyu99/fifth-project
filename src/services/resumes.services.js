@@ -10,7 +10,7 @@ export class ResumeService {
       const resumes = await this.ResumeRepository.getResumes(userId);
 
       if (!resumes) {
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
 
       return resumes.map((resume) => {
@@ -40,7 +40,7 @@ export class ResumeService {
       );
 
       if (!resumeDetail) {
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
       return resumeDetail;
     } catch (err) {
@@ -59,7 +59,7 @@ export class ResumeService {
         content,
       );
       if (!createResume) {
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
 
       return createResume;
@@ -80,7 +80,7 @@ export class ResumeService {
         content,
       );
       if (!updateResume) {
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
       return updateResume;
     } catch (err) {
@@ -98,7 +98,7 @@ export class ResumeService {
         applyId,
       );
       if (!deleteResume) {
-        throw new HttpError.NotFound('User not found');
+        throw new HttpError.NotFound('resume not found');
       }
 
       return deleteResume;
