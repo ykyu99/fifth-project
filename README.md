@@ -1,69 +1,61 @@
-# node-advanced
+회원가입 post
+http://ykyu99.store:3306/api/auth/sign-up
 
-# 환경변수
+json{
+	"email":"ykyu88@naver.com",
+	"password":"aaaa1234",
+	"passwordConfirm":"aaaa1234",
+	"name":"김영규"
+}
 
-- `.env.example` 파일의 이름을 `.env`로 변경하고 아래 내용을 채움
 
-```sh
-SERVER_PORT=서버 포트
-DATABASE_URL=mysql://계정이름:비밀번호@주소:포트/DB명
-ACCESS_TOKEN_SECRET=JWT 생성을 위한 비밀키
-```
+로그인 post
+http://ykyu99.store:3306/api/auth/sign-in
 
-# 실행 방법 (with yarn)
+json{
+	"email":"ykyu89@naver.com",
+	"password":"aaaa1234"
+}
 
-- 필요한 패키지 설치
+이력서 조회 get
+http://ykyu99.store:3306/api/resumes
 
-```sh
-yarn
-```
+이력서 상세조회 get
+http://ykyu99.store:3306/api/resumes/:id
 
-- DB 테이블 생성
-```sh
-yarn prisma db push
-```
+이력서 생성 post
+http://ykyu99.store:3306/api/resumes
 
-- 서버 실행 (배포용)
+json{
+	"title":"지원하는부분",
+	"content":"할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분"
+}
 
-```sh
-yarn start
-```
+이력서 수정 patch
+http://ykyu99.store:3306/api/resumes/:id
 
-- 서버 실행 (개발용)
+json{
+	"title":"지원하는부분",
+	"content":"할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분할말이 꽤나 부족한 부분"
+}
 
-```sh
-yarn dev
-```
+이력서 삭제 delete
+http://ykyu99.store:3306/api/resumes/:id
 
-# 실행 방법 (with npm)
+유저 정보조회 get
+http://ykyu99.store:3306/api/info
 
-- 필요한 패키지 설치
+유저 정보변경 patch
+http://ykyu99.store:3306/api/info
 
-```sh
-npm install
-```
+json{
+	"password":"adad123123",
+	"passwordConfirm":"adad123123"
+}
 
-- DB 테이블 생성
-```sh
-npx prisma db push
-```
+유저 삭제 delete
+http://ykyu99.store:3306/api/info
 
-- 서버 실행 (배포용)
 
-```sh
-npm run start
-```
-
-- 서버 실행 (개발용)
-
-```sh
-npm run dev
-```
-
-# API 명세서
-
-https://modolee.notion.site/78aef426bed046338ee76802132e847c
-
-# ERD
-
-https://drawsql.app/teams/team-modolee/diagrams/sparta-node-advanced
+먼저 로그인 한 후 
+Authorization 토큰을 헤더에 입력한 뒤 진행
