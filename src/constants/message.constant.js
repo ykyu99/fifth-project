@@ -40,6 +40,13 @@ export const MESSAGES = {
     READ_ME: {
       SUCCEED: '내 정보 조회에 성공했습니다.',
     },
+    UPDATE: {
+      SUCCEED: '내 정보 수정에 성공했습니다.',
+      NO_BODY_DATA: '수정 할 정보를 입력해 주세요.',
+    },
+    DELETE: {
+      SUCCEED: '내 정보 삭제에 성공했습니다.',
+    },
   },
   RESUMES: {
     COMMON: {

@@ -9,7 +9,7 @@ import { HASH_SALT_ROUNDS } from '../constants/auth.constant.js';
 
 // User의 컨트롤러(Controller)역할을 하는 클래스
 export class UserController {
-    userService = new UserService(); // User 서비스를 클래스를 컨트롤러 클래스의 멤버 변수로 할당합니다.
+  UserService = new UserService(); // User 서비스를 클래스를 컨트롤러 클래스의 멤버 변수로 할당합니다.
 
   getUser = async (req, res, next) => {
     try {
@@ -17,7 +17,7 @@ export class UserController {
       const { email, password } = req.body;
         
       // 서비스 계층에 구현된 signInUser 로직을 실행합니다.
-      const user = await this.userService.signInUser( email );
+      const user = await this.UserService.signInUser( email );
       
       if (!user) {
         return res.status(HTTP_STATUS.NOT_FOUND).json({
@@ -58,7 +58,7 @@ export class UserController {
     try {
       const { email, password, name } = req.body;
 
-      const existedUser = await this.userService.signInUser( email );
+      const existedUser = await this.UserService.signInUser( email );
 
     // 이메일이 중복된 경우
     if (existedUser) {
@@ -71,7 +71,7 @@ export class UserController {
       const hashedPassword = bcrypt.hashSync(password, HASH_SALT_ROUNDS);
       
       // 서비스 계층에 구현된 createUser 로직을 실행합니다.
-      const createdUser = await this.userService.createUser(
+      const createdUser = await this.UserService.createUser(
         email,
         hashedPassword,
         name,

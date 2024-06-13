@@ -1,11 +1,11 @@
-// src/services/posts.service.js
+
 
 import { UserRepository } from '../repositories/users.repositories.js';
 
 export class UserService {
-    UserRepository = new UserRepository();
+  UserRepository = new UserRepository();
 
-    signInUser = async ( email ) => {
+  signInUser = async ( email ) => {
     // 저장소(Repository)에게 데이터를 요청합니다.
     const user = await this.UserRepository.signInUser( email );
 
@@ -30,5 +30,12 @@ export class UserService {
       createdAt: createdUser.createdAt,
       updatedAt: createdUser.updatedAt,
     };
+  };
+
+  getUserById = async ( id ) => {
+    // 저장소(Repository)에게 데이터를 요청합니다.
+    const user = await this.UserRepository.getUserById( id );
+
+      return user;
   };
 }
