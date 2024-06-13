@@ -13,3 +13,4 @@ authRouter.post('/sign-in', signInValidator, userControllers.getUser);
 authRouter.post('/sign-up', signUpValidator, userControllers.createUser);
 
 export { authRouter };
+

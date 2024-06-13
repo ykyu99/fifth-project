@@ -3,7 +3,7 @@ import { prisma } from '../utils/prisma.util.js';
 
 
 export class ResumeRepository {
-  resumes = async ( userId ) => {
+  getResumes = async ( userId ) => {
     
     const resume = await prisma.resume.findMany({ 
         where: { authorId : +userId },

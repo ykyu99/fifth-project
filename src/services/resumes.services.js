@@ -3,9 +3,9 @@ import { ResumeRepository } from '../repositories/resumes.repositories.js';
 export class ResumeService {
     ResumeRepository = new ResumeRepository();
 
-    resumes = async ( userId ) => {
+    getResumes = async ( userId ) => {
 
-    const resumes = await this.ResumeRepository.resumes( userId );
+    const resumes = await this.ResumeRepository.getResumes( userId );
 
     return resumes.map((resume) => {
         return {

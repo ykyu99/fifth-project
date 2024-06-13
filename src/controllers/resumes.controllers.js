@@ -4,15 +4,16 @@ import { MESSAGES } from '../constants/message.constant.js';
 
 
 
+
 export class ResumeController {
-    ResumeService = new ResumeService(); 
+  ResumeService = new ResumeService(); 
 
   getResumes = async (req, res, next) => {
     try {
 
       const { id: userId } = req.user;
         
-      const resumes = await this.ResumeService.resumes( userId );
+      const resumes = await this.ResumeService.getResumes( userId );
 
       if (!resumes) {
         return res.status(HTTP_STATUS.NOT_FOUND).json({
@@ -100,7 +101,11 @@ export class ResumeController {
       const updateResume = await this.ResumeService.updateResume( userId, applyId, title, content );
       
 
-      return res.status(200).json({ data: updateResume });
+      return res.status(HTTP_STATUS.OK).json({
+        status: HTTP_STATUS.OK,
+        message: MESSAGES.RESUMES.READ_DETAIL.SUCCEED,
+        data: updateResume,
+      });
     } catch (err) {
       next(err);
     }
@@ -130,7 +135,11 @@ export class ResumeController {
       const deleteResume = await this.ResumeService.deleteResume( userId, applyId );
       
 
-      return res.status(200).json({ data: deleteResume });
+      return res.status(HTTP_STATUS.OK).json({
+        status: HTTP_STATUS.OK,
+        message: MESSAGES.RESUMES.READ_DETAIL.SUCCEED,
+        data: deleteResume,
+      });
     } catch (err) {
       next(err);
     }
