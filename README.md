@@ -1,5 +1,5 @@
 회원가입 post
-http://ykyu99.store:3306/api/auth/sign-up
+http://ykyu99.store:3000/api/auth/sign-up
 
 json{
 	"email":"ykyu88@naver.com",
@@ -10,7 +10,7 @@ json{
 
 
 로그인 post
-http://ykyu99.store:3306/api/auth/sign-in
+http://ykyu99.store:3000/api/auth/sign-in
 
 json{
 	"email":"ykyu89@naver.com",
@@ -18,13 +18,13 @@ json{
 }
 
 이력서 조회 get
-http://ykyu99.store:3306/api/resumes
+http://ykyu99.store:3000/api/resumes
 
 이력서 상세조회 get
-http://ykyu99.store:3306/api/resumes/:id
+http://ykyu99.store:3000/api/resumes/:id
 
 이력서 생성 post
-http://ykyu99.store:3306/api/resumes
+http://ykyu99.store:3000/api/resumes
 
 json{
 	"title":"지원하는부분",
@@ -32,7 +32,7 @@ json{
 }
 
 이력서 수정 patch
-http://ykyu99.store:3306/api/resumes/:id
+http://ykyu99.store:3000/api/resumes/:id
 
 json{
 	"title":"지원하는부분",
@@ -40,13 +40,13 @@ json{
 }
 
 이력서 삭제 delete
-http://ykyu99.store:3306/api/resumes/:id
+http://ykyu99.store:3000/api/resumes/:id
 
 유저 정보조회 get
-http://ykyu99.store:3306/api/info
+http://ykyu99.store:3000/api/info
 
 유저 정보변경 patch
-http://ykyu99.store:3306/api/info
+http://ykyu99.store:3000/api/info
 
 json{
 	"password":"adad123123",
@@ -54,7 +54,7 @@ json{
 }
 
 유저 삭제 delete
-http://ykyu99.store:3306/api/info
+http://ykyu99.store:3000/api/info
 
 
 먼저 로그인 한 후 
